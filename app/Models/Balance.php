@@ -15,4 +15,12 @@ class Balance extends Model
 
         return $deposit;
     }
+
+    public function withdraw($value)
+    {
+        $this->amount -= number_format($value, 2, '.', '');
+        $withdraw = $this->save();
+
+        return $withdraw;
+    }
 }

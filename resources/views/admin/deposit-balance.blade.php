@@ -27,7 +27,7 @@
                 <input type="text" class="form-control" name="value" placeholder="Digite um valor">
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-success" name="">
+                <button type="submit" class="btn btn-success">Recarregar</button>
             </div>
         </form>
     </div>

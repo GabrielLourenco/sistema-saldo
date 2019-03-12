@@ -18,10 +18,18 @@
             <i class="fa fa-plus"></i>
             Recarregar
         </a>
-        <a href="" class="btn btn-danger">
+        @if ($amount > 0)
+        <a href="{{ route('admin.withdraw') }}" class="btn btn-danger">
             <i class="fa fa-minus"></i>
             Sacar
         </a>
+        @endif
+        @if ($amount > 0)
+        <a href="{{ route('admin.transfer') }}" class="btn btn-info">
+            <i class="fa fa-exchange"></i>
+            Transferir
+        </a>
+        @endif
     </div>
 </div>
 

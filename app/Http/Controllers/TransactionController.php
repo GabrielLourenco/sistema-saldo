@@ -11,7 +11,7 @@ class TransactionController extends Controller
     {
         $transactions = Auth::user()->transactions()
             ->with('sender')
-            ->get();
+            ->paginate(5);
 
         return view('admin.transaction.index', compact('transactions'));
     }

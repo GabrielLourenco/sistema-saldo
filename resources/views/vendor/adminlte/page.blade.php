@@ -63,17 +63,40 @@
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
                             @else
-                                <a href="#"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                >
-                                    <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
-                                </a>
-                                <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
-                                    @if(config('adminlte.logout_method'))
-                                        {{ method_field(config('adminlte.logout_method')) }}
-                                    @endif
-                                    {{ csrf_field() }}
-                                </form>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <span class="pull-left">
+                                            @if (auth()->user()->image != null)
+                                            <img class="img-responsive img-circle" src="{{url('storage/users/'.auth()->user()->image)}}" style="height:1.5em">
+                                            @else
+                                            <img class="img-responsive img-circle" src="{{url('images/placeholder-user.png')}}" style="height:1.5em">
+                                            @endif
+                                        </span>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('profile')}}">
+                                                <i class="fa fa-fw fa-user"></i> Meu perfil
+                                            </a>
+                                        </li>
+                                        
+                                        <li role="separator" class="divider"></li>
+                                        
+                                        <li>
+                                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
+                                            </a>
+                                        </li>
+                                        <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
+                                            @if(config('adminlte.logout_method'))
+                                                {{ method_field(config('adminlte.logout_method')) }}
+                                            @endif
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </ul>
+                                </li>
                             @endif
                         </li>
                     </ul>

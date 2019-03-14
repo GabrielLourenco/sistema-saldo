@@ -18,6 +18,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => '/admin'], function(){
     Route::get('transaction', 'TransactionController@index')->name('transaction.index');
 });
 
+Route::get('profile', 'UserController@profile')->name('profile')->middleware('auth');
+Route::post('profile/update', 'UserController@update')->name('profile.update')->middleware('auth');
+
 Route::get('/', 'SiteController@index')->name('home');
 
 Auth::routes();
